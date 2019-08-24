@@ -32,5 +32,8 @@
     <ClInclude Include="json.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="webauthn.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
