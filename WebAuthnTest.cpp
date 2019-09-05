@@ -5,16 +5,23 @@
 #include "WebConnection.h"
 #include <Windows.h>
 #include "json.h"
+#include "webauthn.h"
+#include "Utils.h"
+#include "BioEnroll.h"
+
+using namespace std;
 
 int main()
 {
 	WebConnection conn;
-	std::string retJson, challenge, requestId, rpId, rpName, userId, userName;
+	Utils utils;
+	string retJson, challenge, requestId, rpId, rpName, userId, userName;
 	LPCWSTR url = L"localhost";
 	LPCWSTR object = L"/v1/register";
 	LPCSTR data = "username=reno&displayName=Reno&requireResidentKey=false&credentialNickname=reno";
 	
-	retJson = conn.GetDataFromUrl(url, 8080, object, data).c_str();
+	//Connect to FIDO2 server on https://localhost:8080
+	retJson = conn.GetDataFromUrl(url, 8080, object, data);
 	json_value* val = json_parse(retJson.c_str(), retJson.size());
 	
 
@@ -24,19 +31,39 @@ int main()
 	rpId = val->u.object.values[1].value->u.object.values[3].value->u.object.values[0].value->u.object.values[1].value->u.string.ptr;
 	rpName = val->u.object.values[1].value->u.object.values[3].value->u.object.values[0].value->u.object.values[0].value->u.string.ptr;
     
-	//Pass them onto webauthn to call TPM 2.0 based biometric auth
+	BOOL* isTpmAvailable = (BOOL*) 1;
 
+	//Enroll fingerprint
+	BioEnroll bioenroll;
+	bioenroll.EnrollSysPool(FALSE, WINBIO_ANSI_381_POS_RH_THUMB);
+	//DWORD hrd = WebAuthNGetApiVersionNumber();
+	//WebAuthNIsUserVerifyingPlatformAuthenticatorAvailable(isTpmAvailable);
+	
+	/*
+	if (isTpmAvailable) {
+		//Pass them onto webauthn to call TPM 2.0 based biometric auth
+		// Relying Party details
+		WEBAUTHN_RP_ENTITY_INFORMATION rpInfo;
+		rpInfo.dwVersion = WEBAUTHN_RP_ENTITY_INFORMATION_CURRENT_VERSION;
+		rpInfo.pwszId = utils.str2ws(rpId).c_str();
+		rpInfo.pwszName = utils.str2ws(rpName).c_str();
+
+
+		//user details
+		WEBAUTHN_USER_ENTITY_INFORMATION  userInfo;
+
+		userInfo.cbId = 600;
+		userInfo.dwVersion = WEBAUTHN_USER_ENTITY_INFORMATION_CURRENT_VERSION;
+		userInfo.pwszName = L"reno";
+
+
+		//manually make the clientdataJSON with the following fields
+		//type: webauth.create or webauthn.get
+		// clientExtensions = {}
+		// challenge = the challenge we got above
+		// origin = the rp origin we got above
+		
+	}*/
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
 
 

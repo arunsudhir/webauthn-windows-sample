@@ -110,6 +110,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -151,12 +152,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BioEnroll.cpp" />
     <ClCompile Include="json.c" />
+    <ClCompile Include="Utils.cpp" />
     <ClCompile Include="WebAuthnTest.cpp" />
     <ClCompile Include="WebConnection.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BioEnroll.h" />
     <ClInclude Include="json.h" />
+    <ClInclude Include="Utils.h" />
     <ClInclude Include="webauthn.h" />
     <ClInclude Include="WebConnection.h" />
   </ItemGroup>
