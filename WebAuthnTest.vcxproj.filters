@@ -30,6 +30,12 @@
     <ClCompile Include="BioEnroll.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BioVerify.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FileWriter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WebConnection.h">
@@ -45,6 +51,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BioEnroll.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BioVerify.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FileWriter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

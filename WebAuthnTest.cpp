@@ -8,6 +8,9 @@
 #include "webauthn.h"
 #include "Utils.h"
 #include "BioEnroll.h"
+#include "BioVerify.h"
+#include "FileWriter.h"
+#include "BioDelete.h"
 
 using namespace std;
 
@@ -33,9 +36,19 @@ int main()
     
 	BOOL* isTpmAvailable = (BOOL*) 1;
 
-	//Enroll fingerprint
+	//Enroll fingerprint (commented because fingerprint already enrolled)
 	BioEnroll bioenroll;
-	bioenroll.EnrollSysPool(FALSE, WINBIO_ANSI_381_POS_RH_THUMB);
+    bioenroll.EnrollSysPool(FALSE, WINBIO_ANSI_381_POS_RH_LITTLE_FINGER);
+
+	//BioVerify del;
+	//del.DeleteTemplate(WINBIO_ANSI_381_POS_RH_INDEX_FINGER);
+	BioVerify verify;
+	verify.Verify(WINBIO_ANSI_381_POS_RH_LITTLE_FINGER);
+
+
+	//FileWriter writer;
+	//writer.WriteToFile(L"C:\\testfile.txt");
+
 	//DWORD hrd = WebAuthNGetApiVersionNumber();
 	//WebAuthNIsUserVerifyingPlatformAuthenticatorAvailable(isTpmAvailable);
 	

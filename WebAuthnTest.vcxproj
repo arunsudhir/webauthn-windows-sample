@@ -153,6 +153,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BioEnroll.cpp" />
+    <ClCompile Include="BioVerify.cpp" />
+    <ClCompile Include="FileWriter.cpp" />
     <ClCompile Include="json.c" />
     <ClCompile Include="Utils.cpp" />
     <ClCompile Include="WebAuthnTest.cpp" />
@@ -160,6 +162,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BioEnroll.h" />
+    <ClInclude Include="BioVerify.h" />
+    <ClInclude Include="FileWriter.h" />
     <ClInclude Include="json.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="webauthn.h" />
