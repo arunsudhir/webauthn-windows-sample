@@ -44,7 +44,7 @@ int main()
 	//del.DeleteTemplate(WINBIO_ANSI_381_POS_RH_INDEX_FINGER);
 	BioVerify verify;
 	verify.Verify(WINBIO_ANSI_381_POS_RH_LITTLE_FINGER);
-
+	verify.DeleteTemplate(WINBIO_ANSI_381_POS_RH_INDEX_FINGER);
 
 	//FileWriter writer;
 	//writer.WriteToFile(L"C:\\testfile.txt");

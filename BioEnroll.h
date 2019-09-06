@@ -11,6 +11,6 @@ public:
 		BOOL discardEnrollment,
 		WINBIO_BIOMETRIC_SUBTYPE subFactor);
 
-	HRESULT GetCurrentUserIdentity(__inout PWINBIO_IDENTITY Identity);
+	
 };
 

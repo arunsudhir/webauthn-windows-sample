@@ -4,6 +4,7 @@
 #include <Conio.h>
 #include <Winbio.h>
 #include "FileWriter.h"
+#include "Utils.h"
 
 HRESULT BioVerify::Verify(WINBIO_BIOMETRIC_SUBTYPE subFactor)
 {
@@ -12,18 +13,20 @@ HRESULT BioVerify::Verify(WINBIO_BIOMETRIC_SUBTYPE subFactor)
 	WINBIO_UNIT_ID unitId = 0;
 	WINBIO_REJECT_DETAIL rejectDetail = 0;
 	WINBIO_IDENTITY identity = { 0 };
+	WINBIO_IDENTITY identity2 = { 0 };
 	BOOLEAN match = FALSE;
 
 	// Find the identity of the user.
-	/*hr = GetCurrentUserIdentity(&identity);
+	Utils utils;
+	hr = utils.GetCurrentUserIdentity(&identity);
 
 	if (FAILED(hr))
 	{
 		wprintf_s(L"\n User identity not found. hr = 0x%x\n", hr);
 		goto e_Exit;
-	}*/
+	}
 	FileWriter file;
-	identity = file.ReadFromFile(L"C:\\testbio.txt");
+	identity2 = file.ReadFromFile(L"C:\\testbio.txt");
 
 	// Connect to the system pool. 
 	hr = WinBioOpenSession(
@@ -70,7 +73,36 @@ HRESULT BioVerify::Verify(WINBIO_BIOMETRIC_SUBTYPE subFactor)
 	}
 	wprintf_s(L"\n Fingerprint verified:\n", unitId);
 
-
+	//******
+	// Verify a biometric sample.
+	wprintf_s(L"\n Calling WinBioVerify on file identity - Swipe finger on sensor...\n");
+	hr = WinBioVerify(
+		sessionHandle,
+		&identity2,
+		subFactor,
+		&unitId,
+		&match,
+		&rejectDetail
+	);
+	wprintf_s(L"\n Swipe processed - Unit ID: %d\n", unitId);
+	if (FAILED(hr))
+	{
+		if (hr == WINBIO_E_NO_MATCH)
+		{
+			wprintf_s(L"\n- NO MATCH - identity verification failed.\n");
+		}
+		else if (hr == WINBIO_E_BAD_CAPTURE)
+		{
+			wprintf_s(L"\n- Bad capture; reason: %d\n", rejectDetail);
+		}
+		else
+		{
+			wprintf_s(L"\n WinBioVerify failed. hr = 0x%x\n", hr);
+		}
+		goto e_Exit;
+	}
+	wprintf_s(L"\n Fingerprint verified:\n", unitId);
+	//*****
 e_Exit:
 	if (sessionHandle != NULL)
 	{
