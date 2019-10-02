@@ -23,7 +23,7 @@
     <ProjectGuid>{38EA5EE5-A504-4215-9B13-39EFCD0C3F2A}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>WebAuthnTest</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -104,13 +104,15 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_XKEYCHECK_H;WIN32;_WINDOWS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)include;$(SolutionDir)src/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(SolutionDir)lib\*.lib;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.18362.0\um\x64\hid.lib;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.18362.0\um\x64\bcrypt.lib;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.18362.0\um\x64\setupapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -152,22 +154,47 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BioEnroll.cpp" />
-    <ClCompile Include="BioVerify.cpp" />
-    <ClCompile Include="FileWriter.cpp" />
-    <ClCompile Include="json.c" />
-    <ClCompile Include="Utils.cpp" />
-    <ClCompile Include="WebAuthnTest.cpp" />
-    <ClCompile Include="WebConnection.cpp" />
+    <ClCompile Include="src\bio\BioEnroll.cpp" />
+    <ClCompile Include="src\bio\BioVerify.cpp" />
+    <ClCompile Include="src\bio\FileWriter.cpp" />
+    <ClCompile Include="src\bio\Utils.cpp" />
+    <ClCompile Include="src\bio\WebAuthnTest.cpp" />
+    <ClCompile Include="src\bio\WebConnection.cpp" />
+    <ClCompile Include="src\fido2\Base64Utils.cpp" />
+    <ClCompile Include="src\fido2\cbor.c" />
+    <ClCompile Include="src\fido2\cred.c" />
+    <ClCompile Include="src\fido2\FidoLogger.cpp" />
+    <ClCompile Include="src\fido2\register.cpp" />
+    <ClCompile Include="src\json\json.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BioEnroll.h" />
-    <ClInclude Include="BioVerify.h" />
-    <ClInclude Include="FileWriter.h" />
-    <ClInclude Include="json.h" />
-    <ClInclude Include="Utils.h" />
-    <ClInclude Include="webauthn.h" />
-    <ClInclude Include="WebConnection.h" />
+    <ClInclude Include="src\include\bio\BioDelete.h" />
+    <ClInclude Include="src\include\bio\BioEnroll.h" />
+    <ClInclude Include="src\include\bio\BioVerify.h" />
+    <ClInclude Include="src\include\bio\FileWriter.h" />
+    <ClInclude Include="src\include\bio\Utils.h" />
+    <ClInclude Include="src\include\bio\webauthn.h" />
+    <ClInclude Include="src\include\bio\WebConnection.h" />
+    <ClInclude Include="src\include\fido2\Base64Utils.h" />
+    <ClInclude Include="src\include\fido2\blob.h" />
+    <ClInclude Include="src\include\fido2\cbor.h" />
+    <ClInclude Include="src\include\fido2\extern.h" />
+    <ClInclude Include="src\include\fido2\fido.h" />
+    <ClInclude Include="src\include\fido2\FidoLogger.h" />
+    <ClInclude Include="src\include\fido2\iso7816.h" />
+    <ClInclude Include="src\include\fido2\packed.h" />
+    <ClInclude Include="src\include\fido2\register.h" />
+    <ClInclude Include="src\include\fido2\tls.h" />
+    <ClInclude Include="src\include\fido2\types.h" />
+    <ClInclude Include="src\include\json\json.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="lib\cbor.lib" />
+    <Library Include="lib\crypto-45.lib" />
+    <Library Include="lib\fido2.lib" />
+    <Library Include="lib\fido2_static.lib" />
+    <Library Include="lib\ssl-47.lib" />
+    <Library Include="lib\tls-19.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

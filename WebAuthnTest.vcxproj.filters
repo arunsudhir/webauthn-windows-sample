@@ -13,51 +13,143 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\fido2">
+      <UniqueIdentifier>{c1de4364-492d-4eba-b0a6-eb5b6396be19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\bio">
+      <UniqueIdentifier>{949a5193-4dc4-4600-867e-f2f2d124d89a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\fido2">
+      <UniqueIdentifier>{eafb414f-50b8-4db3-8d09-1352e206d3f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\bio">
+      <UniqueIdentifier>{f0e1b83f-5b8d-47a1-aa98-286b021227d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\json">
+      <UniqueIdentifier>{4a5bc71b-6ea4-4539-8987-0e688c8cc66e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\json">
+      <UniqueIdentifier>{6c02dab4-fde0-4b9c-a699-6ecf59ef8ebe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lib64">
+      <UniqueIdentifier>{5b7d7c39-0a0b-407c-8cfb-12af0fa336ed}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="WebAuthnTest.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\bio\BioEnroll.cpp">
+      <Filter>Source Files\bio</Filter>
     </ClCompile>
-    <ClCompile Include="WebConnection.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\bio\BioVerify.cpp">
+      <Filter>Source Files\bio</Filter>
     </ClCompile>
-    <ClCompile Include="json.c">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\bio\FileWriter.cpp">
+      <Filter>Source Files\bio</Filter>
     </ClCompile>
-    <ClCompile Include="Utils.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\bio\Utils.cpp">
+      <Filter>Source Files\bio</Filter>
     </ClCompile>
-    <ClCompile Include="BioEnroll.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\bio\WebAuthnTest.cpp">
+      <Filter>Source Files\bio</Filter>
     </ClCompile>
-    <ClCompile Include="BioVerify.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\bio\WebConnection.cpp">
+      <Filter>Source Files\bio</Filter>
     </ClCompile>
-    <ClCompile Include="FileWriter.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\fido2\Base64Utils.cpp">
+      <Filter>Source Files\fido2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\fido2\cbor.c">
+      <Filter>Source Files\fido2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\fido2\cred.c">
+      <Filter>Source Files\fido2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\fido2\FidoLogger.cpp">
+      <Filter>Source Files\fido2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\fido2\register.cpp">
+      <Filter>Source Files\fido2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\json\json.c">
+      <Filter>Source Files\json</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="WebConnection.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\include\bio\BioDelete.h">
+      <Filter>Header Files\bio</Filter>
     </ClInclude>
-    <ClInclude Include="json.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\include\bio\BioEnroll.h">
+      <Filter>Header Files\bio</Filter>
     </ClInclude>
-    <ClInclude Include="webauthn.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\include\bio\BioVerify.h">
+      <Filter>Header Files\bio</Filter>
     </ClInclude>
-    <ClInclude Include="Utils.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\include\bio\FileWriter.h">
+      <Filter>Header Files\bio</Filter>
     </ClInclude>
-    <ClInclude Include="BioEnroll.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\include\bio\Utils.h">
+      <Filter>Header Files\bio</Filter>
     </ClInclude>
-    <ClInclude Include="BioVerify.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\include\bio\webauthn.h">
+      <Filter>Header Files\bio</Filter>
     </ClInclude>
-    <ClInclude Include="FileWriter.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\include\bio\WebConnection.h">
+      <Filter>Header Files\bio</Filter>
     </ClInclude>
+    <ClInclude Include="src\include\fido2\Base64Utils.h">
+      <Filter>Header Files\fido2</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\fido2\blob.h">
+      <Filter>Header Files\fido2</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\fido2\cbor.h">
+      <Filter>Header Files\fido2</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\fido2\extern.h">
+      <Filter>Header Files\fido2</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\fido2\fido.h">
+      <Filter>Header Files\fido2</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\fido2\FidoLogger.h">
+      <Filter>Header Files\fido2</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\fido2\iso7816.h">
+      <Filter>Header Files\fido2</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\fido2\packed.h">
+      <Filter>Header Files\fido2</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\fido2\tls.h">
+      <Filter>Header Files\fido2</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\fido2\types.h">
+      <Filter>Header Files\fido2</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\json\json.h">
+      <Filter>Header Files\json</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\fido2\register.h">
+      <Filter>Header Files\fido2</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="lib\cbor.lib">
+      <Filter>lib64</Filter>
+    </Library>
+    <Library Include="lib\crypto-45.lib">
+      <Filter>lib64</Filter>
+    </Library>
+    <Library Include="lib\fido2.lib">
+      <Filter>lib64</Filter>
+    </Library>
+    <Library Include="lib\fido2_static.lib">
+      <Filter>lib64</Filter>
+    </Library>
+    <Library Include="lib\ssl-47.lib">
+      <Filter>lib64</Filter>
+    </Library>
+    <Library Include="lib\tls-19.lib">
+      <Filter>lib64</Filter>
+    </Library>
   </ItemGroup>
 </Project>
