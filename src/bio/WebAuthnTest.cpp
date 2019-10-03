@@ -36,7 +36,7 @@ int main()
 	rpName = val->u.object.values[1].value->u.object.values[3].value->u.object.values[0].value->u.object.values[0].value->u.string.ptr;
     
 	BOOL* isTpmAvailable = (BOOL*) 1;
-	const char* userId = "reno";
+	const char* userId = "arunsu";
 	registerWebAuthn(challenge.c_str(), userId);
 	//Enroll fingerprint (commented because fingerprint already enrolled)
 	//BioEnroll bioenroll;

@@ -34,6 +34,9 @@
     <Filter Include="lib64">
       <UniqueIdentifier>{5b7d7c39-0a0b-407c-8cfb-12af0fa336ed}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Runtime">
+      <UniqueIdentifier>{5a1314c1-41b0-4dd6-9713-b5ebc96738ad}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\bio\BioEnroll.cpp">
@@ -151,5 +154,25 @@
     <Library Include="lib\tls-19.lib">
       <Filter>lib64</Filter>
     </Library>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="runtime\cbor.dll">
+      <Filter>Resource Files\Runtime</Filter>
+    </None>
+    <None Include="runtime\cbor.pdb">
+      <Filter>Resource Files\Runtime</Filter>
+    </None>
+    <None Include="runtime\crypto-45.dll">
+      <Filter>Resource Files\Runtime</Filter>
+    </None>
+    <None Include="runtime\crypto-45.pdb">
+      <Filter>Resource Files\Runtime</Filter>
+    </None>
+    <None Include="runtime\fido2.dll">
+      <Filter>Resource Files\Runtime</Filter>
+    </None>
+    <None Include="runtime\fido2.pdb">
+      <Filter>Resource Files\Runtime</Filter>
+    </None>
   </ItemGroup>
 </Project>

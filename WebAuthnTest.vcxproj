@@ -196,6 +196,26 @@
     <Library Include="lib\ssl-47.lib" />
     <Library Include="lib\tls-19.lib" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="runtime\cbor.dll">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="runtime\cbor.pdb">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="runtime\crypto-45.dll">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="runtime\crypto-45.pdb">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="runtime\fido2.dll">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="runtime\fido2.pdb">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

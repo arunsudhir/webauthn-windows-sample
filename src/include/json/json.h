@@ -45,11 +45,8 @@
 #endif
 
 #include <stdlib.h>
-
-#ifdef __cplusplus
-
 #include <string.h>
-
+#ifdef __cplusplus
 
 extern "C"
 {
