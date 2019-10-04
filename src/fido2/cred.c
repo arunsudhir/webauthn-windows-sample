@@ -8,16 +8,17 @@
 #include <openssl/evp.h>
 #include <openssl/sha.h>
 #include <openssl/x509.h>
+#include <openssl/err.h>
+#include <stdbool.h>
+#include <fido/es256.h>
 
 #include "string.h"
 #include "fido2/fido.h"
 #include "fido2/extern.h"
-#include <fido/es256.h>
 #include "..\\libcbor\cbor\data.h"
-#include <openssl/sha.h>
 #include "fido2/types.h"
-#include <openssl/err.h>
-#include <stdbool.h>
+#include "fido2/blob.h"
+
 
 
 static int parse_makecred_reply(const cbor_item_t *key, const cbor_item_t *val, void *arg)
@@ -63,6 +64,7 @@ fido_dev_make_cred_tx(fido_cred_t *cred)
 		r = FIDO_ERR_INVALID_ARGUMENT;
 		goto fail;
 	}
+
 
 	if ((argv[0] = fido_blob_encode(&cred->cdh)) == NULL ||
 	    (argv[1] = encode_rp_entity(&cred->rp)) == NULL ||

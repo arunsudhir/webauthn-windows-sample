@@ -5,7 +5,8 @@
  */
 
 #include <string.h>
-#include <fido2/blob.h>
+#include "fido2/blob.h"
+#include "..//libcbor/cbor/bytestrings.h"
 
 fido_blob_t *
 fido_blob_new(void)

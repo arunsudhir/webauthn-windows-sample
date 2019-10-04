@@ -9,6 +9,7 @@
 #include <openssl/sha.h>
 #include "..\\src\libcbor\cbor\data.h"
 #include "..\\src\libcbor\cbor.h"
+#include "..\\src\libcbor\cbor\bytestrings.h"
 #include <openbsd-compat/openbsd-compat.h>
 #include "string.h"
 #include <fido2/fido.h>
@@ -875,7 +876,8 @@ decode_fmt(const cbor_item_t *item, char **fmt)
 		return (-1);
 	}
 
-	if (strcmp(type, "packed") && strcmp(type, "fido-u2f")) {
+	// LAMBERT: Added "none" and "tpm" formats
+	if (strcmp(type, "packed") && strcmp(type, "fido-u2f") && strcmp(type, "tpm") && strcmp(type, "none")) {
 		log_debug("%s: type=%s", __func__, type);
 		free(type);
 		return (-1);
@@ -884,6 +886,11 @@ decode_fmt(const cbor_item_t *item, char **fmt)
 	*fmt = type;
 
 	return (0);
+}
+
+cbor_item_t * 
+construct_poc_data() {
+
 }
 
 struct cose_key {
