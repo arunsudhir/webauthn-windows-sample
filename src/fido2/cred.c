@@ -13,7 +13,7 @@
 #include "fido2/fido.h"
 #include "fido2/extern.h"
 #include <fido/es256.h>
-#include <cbor/data.h>
+#include "..\\libcbor\cbor\data.h"
 #include <openssl/sha.h>
 #include "fido2/types.h"
 #include <openssl/err.h>

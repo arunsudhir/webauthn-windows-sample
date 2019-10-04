@@ -19,10 +19,10 @@ int main()
 {
 	WebConnection conn;
 	Utils utils;
-	string retJson, challenge, requestId, rpId, rpName, userName;
+	string retJson, challenge, requestId, rpId, rpName, userName, displayName, userId;
 	LPCWSTR url = L"localhost";
 	LPCWSTR object = L"/v1/register";
-	LPCSTR data = "username=reno&displayName=Reno&requireResidentKey=false&credentialNickname=reno";
+	LPCSTR data = "username=arunsu&displayName=Arun&requireResidentKey=false&credentialNickname=arunsu";
 	
 	//Connect to FIDO2 server on https://localhost:8080
 	retJson = conn.GetDataFromUrl(url, 8080, object, data);
@@ -34,10 +34,12 @@ int main()
 	requestId = val->u.object.values[1].value->u.object.values[2].value->u.string.ptr;
 	rpId = val->u.object.values[1].value->u.object.values[3].value->u.object.values[0].value->u.object.values[1].value->u.string.ptr;
 	rpName = val->u.object.values[1].value->u.object.values[3].value->u.object.values[0].value->u.object.values[0].value->u.string.ptr;
-    
+    userName    = val->u.object.values[1].value->u.object.values[3].value->u.object.values[1].value->u.object.values[0].value->u.string.ptr;
+	displayName = val->u.object.values[1].value->u.object.values[3].value->u.object.values[1].value->u.object.values[1].value->u.string.ptr;
+	userId      = val->u.object.values[1].value->u.object.values[3].value->u.object.values[1].value->u.object.values[2].value->u.string.ptr;
 	BOOL* isTpmAvailable = (BOOL*) 1;
-	const char* userId = "arunsu";
-	registerWebAuthn(challenge.c_str(), userId);
+	const char* userIdStr = userId.c_str();
+	registerWebAuthn(challenge.c_str(), userIdStr);
 	//Enroll fingerprint (commented because fingerprint already enrolled)
 	//BioEnroll bioenroll;
     //bioenroll.EnrollSysPool(FALSE, WINBIO_ANSI_381_POS_RH_LITTLE_FINGER);

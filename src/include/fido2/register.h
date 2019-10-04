@@ -1,2 +1,2 @@
 void registerWebAuthn(const char* challenge, const char* userId);
-unsigned char* convertToUnsignedAndHash(const char* data);
+void convertToUnsignedAndHash(const char* data, unsigned char (&hashVal)[32]);

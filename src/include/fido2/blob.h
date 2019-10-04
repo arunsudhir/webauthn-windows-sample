@@ -7,7 +7,7 @@
 #ifndef _BLOB_H
 #define _BLOB_H
 
-#include "cbor/data.h"
+#include "..\\libcbor\cbor\data.h"
 
 typedef struct fido_blob {
 	unsigned char	*ptr;

@@ -37,6 +37,24 @@
     <Filter Include="Resource Files\Runtime">
       <UniqueIdentifier>{5a1314c1-41b0-4dd6-9713-b5ebc96738ad}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\libcbor">
+      <UniqueIdentifier>{37a2fd77-047a-406e-ad12-4b4d09c7324a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\libcbor\cbor">
+      <UniqueIdentifier>{51d3b35d-435e-4bdd-aacc-d69e74fb8c42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\libcbor\cbor\internal">
+      <UniqueIdentifier>{79f24244-0be8-419c-a1db-2527c2c942bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\libcbor">
+      <UniqueIdentifier>{24d602bb-efc3-4ec1-8066-576b2d41775c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\libcbor\cbor">
+      <UniqueIdentifier>{25096a4b-ca0c-47f5-b29b-103269a51104}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\libcbor\cbor\internal">
+      <UniqueIdentifier>{64713267-20c1-466f-8805-0cd8d4a77924}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\bio\BioEnroll.cpp">
@@ -60,9 +78,6 @@
     <ClCompile Include="src\fido2\Base64Utils.cpp">
       <Filter>Source Files\fido2</Filter>
     </ClCompile>
-    <ClCompile Include="src\fido2\cbor.c">
-      <Filter>Source Files\fido2</Filter>
-    </ClCompile>
     <ClCompile Include="src\fido2\cred.c">
       <Filter>Source Files\fido2</Filter>
     </ClCompile>
@@ -74,6 +89,75 @@
     </ClCompile>
     <ClCompile Include="src\json\json.c">
       <Filter>Source Files\json</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libcbor\allocators.c">
+      <Filter>Source Files\libcbor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libcbor\cbor.c">
+      <Filter>Source Files\libcbor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libcbor\cbor\arrays.c">
+      <Filter>Source Files\libcbor\cbor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libcbor\cbor\bytestrings.c">
+      <Filter>Source Files\libcbor\cbor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libcbor\cbor\callbacks.c">
+      <Filter>Source Files\libcbor\cbor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libcbor\cbor\common.c">
+      <Filter>Source Files\libcbor\cbor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libcbor\cbor\encoding.c">
+      <Filter>Source Files\libcbor\cbor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libcbor\cbor\floats_ctrls.c">
+      <Filter>Source Files\libcbor\cbor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libcbor\cbor\ints.c">
+      <Filter>Source Files\libcbor\cbor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libcbor\cbor\maps.c">
+      <Filter>Source Files\libcbor\cbor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libcbor\cbor\serialization.c">
+      <Filter>Source Files\libcbor\cbor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libcbor\cbor\streaming.c">
+      <Filter>Source Files\libcbor\cbor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libcbor\cbor\strings.c">
+      <Filter>Source Files\libcbor\cbor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libcbor\cbor\tags.c">
+      <Filter>Source Files\libcbor\cbor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libcbor\cbor\internal\builder_callbacks.c">
+      <Filter>Source Files\libcbor\cbor\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libcbor\cbor\internal\encoders.c">
+      <Filter>Source Files\libcbor\cbor\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libcbor\cbor\internal\loaders.c">
+      <Filter>Source Files\libcbor\cbor\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libcbor\cbor\internal\memory_utils.c">
+      <Filter>Source Files\libcbor\cbor\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libcbor\cbor\internal\stack.c">
+      <Filter>Source Files\libcbor\cbor\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libcbor\cbor\internal\unicode.c">
+      <Filter>Source Files\libcbor\cbor\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="src\bio\fidoutils.c">
+      <Filter>Source Files\bio</Filter>
+    </ClCompile>
+    <ClCompile Include="src\fido2\blob.c">
+      <Filter>Source Files\fido2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\fido2\cborutils.c">
+      <Filter>Source Files\fido2</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -104,9 +188,6 @@
     <ClInclude Include="src\include\fido2\blob.h">
       <Filter>Header Files\fido2</Filter>
     </ClInclude>
-    <ClInclude Include="src\include\fido2\cbor.h">
-      <Filter>Header Files\fido2</Filter>
-    </ClInclude>
     <ClInclude Include="src\include\fido2\extern.h">
       <Filter>Header Files\fido2</Filter>
     </ClInclude>
@@ -134,11 +215,71 @@
     <ClInclude Include="src\include\fido2\register.h">
       <Filter>Header Files\fido2</Filter>
     </ClInclude>
+    <ClInclude Include="src\libcbor\cbor\internal\builder_callbacks.h">
+      <Filter>Header Files\libcbor\cbor\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libcbor\cbor\internal\encoders.h">
+      <Filter>Header Files\libcbor\cbor\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libcbor\cbor\internal\loaders.h">
+      <Filter>Header Files\libcbor\cbor\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libcbor\cbor\internal\memory_utils.h">
+      <Filter>Header Files\libcbor\cbor\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libcbor\cbor\internal\stack.h">
+      <Filter>Header Files\libcbor\cbor\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libcbor\cbor\internal\unicode.h">
+      <Filter>Header Files\libcbor\cbor\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libcbor\cbor\arrays.h">
+      <Filter>Header Files\libcbor\cbor</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libcbor\cbor\bytestrings.h">
+      <Filter>Header Files\libcbor\cbor</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libcbor\cbor\callbacks.h">
+      <Filter>Header Files\libcbor\cbor</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libcbor\cbor\common.h">
+      <Filter>Header Files\libcbor\cbor</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libcbor\cbor\configuration.h">
+      <Filter>Header Files\libcbor\cbor</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libcbor\cbor\data.h">
+      <Filter>Header Files\libcbor\cbor</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libcbor\cbor\encoding.h">
+      <Filter>Header Files\libcbor\cbor</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libcbor\cbor\floats_ctrls.h">
+      <Filter>Header Files\libcbor\cbor</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libcbor\cbor\ints.h">
+      <Filter>Header Files\libcbor\cbor</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libcbor\cbor\maps.h">
+      <Filter>Header Files\libcbor\cbor</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libcbor\cbor\serialization.h">
+      <Filter>Header Files\libcbor\cbor</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libcbor\cbor\streaming.h">
+      <Filter>Header Files\libcbor\cbor</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libcbor\cbor\strings.h">
+      <Filter>Header Files\libcbor\cbor</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libcbor\cbor\tags.h">
+      <Filter>Header Files\libcbor\cbor</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libcbor\cbor.h">
+      <Filter>Header Files\libcbor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Library Include="lib\cbor.lib">
-      <Filter>lib64</Filter>
-    </Library>
     <Library Include="lib\crypto-45.lib">
       <Filter>lib64</Filter>
     </Library>
@@ -156,12 +297,6 @@
     </Library>
   </ItemGroup>
   <ItemGroup>
-    <None Include="runtime\cbor.dll">
-      <Filter>Resource Files\Runtime</Filter>
-    </None>
-    <None Include="runtime\cbor.pdb">
-      <Filter>Resource Files\Runtime</Filter>
-    </None>
     <None Include="runtime\crypto-45.dll">
       <Filter>Resource Files\Runtime</Filter>
     </None>

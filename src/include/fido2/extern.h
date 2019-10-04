@@ -7,9 +7,27 @@
 #ifndef _EXTERN_H
 #define _EXTERN_H
 
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
 #include "blob.h"
 #include "fido.h"
 #include "types.h"
+#include <openssl/ec.h>
+#include <openssl/evp.h>
+#include <openssl/rsa.h>
+
+/* fidoutil.c */
+EC_KEY *read_ec_pubkey(const char *);
+RSA *read_rsa_pubkey(const  char *);
+EVP_PKEY *read_eddsa_pubkey(const char *);
+int read_blob(const char *, unsigned char **, size_t *);
+int write_blob(const char *, const unsigned char *, size_t);
+int write_ec_pubkey(const char *, const void *, size_t);
+int write_rsa_pubkey(const char *, const void *, size_t);
+int write_eddsa_pubkey(const char *, const void *, size_t);
 
  /* aes256 */
 int aes256_cbc_dec(const fido_blob_t*, const fido_blob_t*, fido_blob_t*);
@@ -123,5 +141,9 @@ void fido_cred_reset_rx(fido_cred_t*);
 void fido_cred_reset_tx(fido_cred_t*);
 int check_rp_id(const char*, const unsigned char*);
 int check_flags(uint8_t, fido_opt_t, fido_opt_t);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* !_EXTERN_H */

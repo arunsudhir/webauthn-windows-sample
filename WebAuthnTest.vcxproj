@@ -104,14 +104,15 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_XKEYCHECK_H;WIN32;_WINDOWS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;CBOR_CUSTOM_ALLOC;_XKEYCHECK_H;WIN64;_WINDOWS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)include;$(SolutionDir)src/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(SolutionDir)lib\*.lib;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.18362.0\um\x64\hid.lib;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.18362.0\um\x64\bcrypt.lib;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.18362.0\um\x64\setupapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ws2_32.lib;$(SolutionDir)lib\*.lib;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.18362.0\um\x64\hid.lib;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.18362.0\um\x64\bcrypt.lib;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.18362.0\um\x64\setupapi.lib;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\lib\x64\msvcrtd.lib;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\lib\x64\msvcrt.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
@@ -156,16 +157,38 @@
   <ItemGroup>
     <ClCompile Include="src\bio\BioEnroll.cpp" />
     <ClCompile Include="src\bio\BioVerify.cpp" />
+    <ClCompile Include="src\bio\fidoutils.c" />
     <ClCompile Include="src\bio\FileWriter.cpp" />
     <ClCompile Include="src\bio\Utils.cpp" />
     <ClCompile Include="src\bio\WebAuthnTest.cpp" />
     <ClCompile Include="src\bio\WebConnection.cpp" />
     <ClCompile Include="src\fido2\Base64Utils.cpp" />
-    <ClCompile Include="src\fido2\cbor.c" />
+    <ClCompile Include="src\fido2\blob.c" />
+    <ClCompile Include="src\fido2\cborutils.c" />
     <ClCompile Include="src\fido2\cred.c" />
     <ClCompile Include="src\fido2\FidoLogger.cpp" />
     <ClCompile Include="src\fido2\register.cpp" />
     <ClCompile Include="src\json\json.c" />
+    <ClCompile Include="src\libcbor\allocators.c" />
+    <ClCompile Include="src\libcbor\cbor.c" />
+    <ClCompile Include="src\libcbor\cbor\arrays.c" />
+    <ClCompile Include="src\libcbor\cbor\bytestrings.c" />
+    <ClCompile Include="src\libcbor\cbor\callbacks.c" />
+    <ClCompile Include="src\libcbor\cbor\common.c" />
+    <ClCompile Include="src\libcbor\cbor\encoding.c" />
+    <ClCompile Include="src\libcbor\cbor\floats_ctrls.c" />
+    <ClCompile Include="src\libcbor\cbor\internal\builder_callbacks.c" />
+    <ClCompile Include="src\libcbor\cbor\internal\encoders.c" />
+    <ClCompile Include="src\libcbor\cbor\internal\loaders.c" />
+    <ClCompile Include="src\libcbor\cbor\internal\memory_utils.c" />
+    <ClCompile Include="src\libcbor\cbor\internal\stack.c" />
+    <ClCompile Include="src\libcbor\cbor\internal\unicode.c" />
+    <ClCompile Include="src\libcbor\cbor\ints.c" />
+    <ClCompile Include="src\libcbor\cbor\maps.c" />
+    <ClCompile Include="src\libcbor\cbor\serialization.c" />
+    <ClCompile Include="src\libcbor\cbor\streaming.c" />
+    <ClCompile Include="src\libcbor\cbor\strings.c" />
+    <ClCompile Include="src\libcbor\cbor\tags.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\include\bio\BioDelete.h" />
@@ -177,7 +200,6 @@
     <ClInclude Include="src\include\bio\WebConnection.h" />
     <ClInclude Include="src\include\fido2\Base64Utils.h" />
     <ClInclude Include="src\include\fido2\blob.h" />
-    <ClInclude Include="src\include\fido2\cbor.h" />
     <ClInclude Include="src\include\fido2\extern.h" />
     <ClInclude Include="src\include\fido2\fido.h" />
     <ClInclude Include="src\include\fido2\FidoLogger.h" />
@@ -187,9 +209,29 @@
     <ClInclude Include="src\include\fido2\tls.h" />
     <ClInclude Include="src\include\fido2\types.h" />
     <ClInclude Include="src\include\json\json.h" />
+    <ClInclude Include="src\libcbor\cbor.h" />
+    <ClInclude Include="src\libcbor\cbor\arrays.h" />
+    <ClInclude Include="src\libcbor\cbor\bytestrings.h" />
+    <ClInclude Include="src\libcbor\cbor\callbacks.h" />
+    <ClInclude Include="src\libcbor\cbor\common.h" />
+    <ClInclude Include="src\libcbor\cbor\configuration.h" />
+    <ClInclude Include="src\libcbor\cbor\data.h" />
+    <ClInclude Include="src\libcbor\cbor\encoding.h" />
+    <ClInclude Include="src\libcbor\cbor\floats_ctrls.h" />
+    <ClInclude Include="src\libcbor\cbor\internal\builder_callbacks.h" />
+    <ClInclude Include="src\libcbor\cbor\internal\encoders.h" />
+    <ClInclude Include="src\libcbor\cbor\internal\loaders.h" />
+    <ClInclude Include="src\libcbor\cbor\internal\memory_utils.h" />
+    <ClInclude Include="src\libcbor\cbor\internal\stack.h" />
+    <ClInclude Include="src\libcbor\cbor\internal\unicode.h" />
+    <ClInclude Include="src\libcbor\cbor\ints.h" />
+    <ClInclude Include="src\libcbor\cbor\maps.h" />
+    <ClInclude Include="src\libcbor\cbor\serialization.h" />
+    <ClInclude Include="src\libcbor\cbor\streaming.h" />
+    <ClInclude Include="src\libcbor\cbor\strings.h" />
+    <ClInclude Include="src\libcbor\cbor\tags.h" />
   </ItemGroup>
   <ItemGroup>
-    <Library Include="lib\cbor.lib" />
     <Library Include="lib\crypto-45.lib" />
     <Library Include="lib\fido2.lib" />
     <Library Include="lib\fido2_static.lib" />
@@ -197,12 +239,6 @@
     <Library Include="lib\tls-19.lib" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="runtime\cbor.dll">
-      <DeploymentContent>true</DeploymentContent>
-    </None>
-    <None Include="runtime\cbor.pdb">
-      <DeploymentContent>true</DeploymentContent>
-    </None>
     <None Include="runtime\crypto-45.dll">
       <DeploymentContent>true</DeploymentContent>
     </None>

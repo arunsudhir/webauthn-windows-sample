@@ -68,7 +68,7 @@ warn(const char *fmt, ...)
 	}
 	va_end(ap);
 	size_t errmsglen = 100;
-	char* errmsg;
+	char* errmsg="";
 	fprintf(stderr, "%s\n", strerror_s(errmsg, errmsglen, sverrno));
 }
 

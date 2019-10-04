@@ -43,8 +43,8 @@ void registerWebAuthn(const char* challenge, const char* userId) {
 
 	
 	const char* clientData = "{ \"type\": \"webauthn.create\", \"challenge\": \"challengehere\", \"origin\": \"http://localhost\" }";
-	unsigned char* clientDataHash;
-	clientDataHash = convertToUnsignedAndHash(clientData);
+	unsigned char clientDataHash[32];
+	convertToUnsignedAndHash(clientData, clientDataHash);
 	/*unsigned char* val = new unsigned char[strlen(clientData) + 1];
 	strcpy_s((char*)val, strlen(clientData) + 1, clientData);
 	unsigned char clientDataHash[32];
@@ -52,8 +52,8 @@ void registerWebAuthn(const char* challenge, const char* userId) {
 	*/
 
 	const char* user_Id = userId;
-	unsigned char* userIdHash;
-	userIdHash = convertToUnsignedAndHash(user_Id);
+	unsigned char userIdHash[32];
+	convertToUnsignedAndHash(user_Id, userIdHash);
 
 	/* client data hash */
 	retCode = fido_cred_set_clientdata_hash(cred, clientDataHash, sizeof(clientDataHash));
@@ -96,12 +96,105 @@ void registerWebAuthn(const char* challenge, const char* userId) {
 
 }
 
-unsigned char* convertToUnsignedAndHash(const char* data) {
+
+/*static void
+verify_cred(int type, const char* fmt, const unsigned char* authdata_ptr,
+	size_t authdata_len, const unsigned char* x509_ptr, size_t x509_len,
+	const unsigned char* sig_ptr, size_t sig_len, bool rk, bool uv, int ext,
+	const char* key_out, const char* id_out)
+{
+	fido_cred_t* cred;
+	int		 r;
+	FidoLogger logger;
+
+	if ((cred = fido_cred_new()) == NULL)
+		logger.log_debug("fido_cred_new");
+
+	// type 
+	r = fido_cred_set_type(cred, type);
+	if (r != FIDO_OK)
+		logger.log_debug("fido_cred_set_type: %s (0x%x)", fido_strerr(r), r);
+
+
+	// relying party 
+	r = fido_cred_set_rp(cred, "localhost", "sweet home localhost");
+	if (r != FIDO_OK)
+		logger.log_debug("fido_cred_set_rp: %s (0x%x)", fido_strerr(r), r);
+
+	// authdata 
+	r = fido_cred_set_authdata(cred, authdata_ptr, authdata_len);
+	if (r != FIDO_OK)
+		logger.log_debug("fido_cred_set_authdata: %s (0x%x)", fido_strerr(r), r);
+
+	//extensions 
+	r = fido_cred_set_extensions(cred, ext);
+	if (r != FIDO_OK)
+		logger.log_debug("fido_cred_set_extensions: %s (0x%x)", fido_strerr(r), r);
+
+	/* resident key 
+	if (rk && (r = fido_cred_set_rk(cred, FIDO_OPT_TRUE)) != FIDO_OK)
+		logger.log_debug("fido_cred_set_rk: %s (0x%x)", fido_strerr(r), r);
+
+	/* user verification 
+	if (uv && (r = fido_cred_set_uv(cred, FIDO_OPT_TRUE)) != FIDO_OK)
+		logger.log_debug("fido_cred_set_uv: %s (0x%x)", fido_strerr(r), r);
+
+	/* x509 
+	r = fido_cred_set_x509(cred, x509_ptr, x509_len);
+	if (r != FIDO_OK)
+		logger.log_debug("fido_cred_set_x509: %s (0x%x)", fido_strerr(r), r);
+
+	/* sig 
+	r = fido_cred_set_sig(cred, sig_ptr, sig_len);
+	if (r != FIDO_OK)
+		logger.log_debug("fido_cred_set_sig: %s (0x%x)", fido_strerr(r), r);
+
+	/* fmt 
+	r = fido_cred_set_fmt(cred, fmt);
+	if (r != FIDO_OK)
+		logger.log_debug("fido_cred_set_fmt: %s (0x%x)", fido_strerr(r), r);
+
+	r = fido_cred_verify(cred);
+	if (r != FIDO_OK)
+		logger.log_debug("fido_cred_verify: %s (0x%x)", fido_strerr(r), r);
+
+	if (key_out != NULL) {
+		/* extract the credential pubkey 
+		if (type == COSE_ES256) {
+			if (write_ec_pubkey(key_out, fido_cred_pubkey_ptr(cred),
+				fido_cred_pubkey_len(cred)) < 0)
+				logger.log_debug("write_ec_pubkey");
+		}
+		else if (type == COSE_RS256) {
+			if (write_rsa_pubkey(key_out, fido_cred_pubkey_ptr(cred),
+				fido_cred_pubkey_len(cred)) < 0)
+				logger.log_debug("write_rsa_pubkey");
+		}
+		else if (type == COSE_EDDSA) {
+			if (write_eddsa_pubkey(key_out, fido_cred_pubkey_ptr(cred),
+				fido_cred_pubkey_len(cred)) < 0)
+				logger.log_debug("write_eddsa_pubkey");
+		}
+	}
+
+	if (id_out != NULL) {
+		/* extract the credential id 
+		if (write_blob(id_out, fido_cred_id_ptr(cred),
+			fido_cred_id_len(cred)) < 0)
+			logger.log_debug("write_blob");
+	}
+
+	fido_cred_free(&cred);
+} */
+
+ void convertToUnsignedAndHash(const char* data, unsigned char (&hashVal)[32]) {
 	//char* clientData = "{ \"type\": \"webauthn.create\", \"challenge\": \"challengehere\", \"origin\": \"http://localhost\" }";
 	unsigned char* val = new unsigned char[strlen(data) + 1];
 	strcpy_s((char*)val, strlen(data) + 1, data);
 	unsigned char hash[32];
 	SHA256(val, (sizeof(val) / sizeof(unsigned char*)), hash);
-	return hash;
+	for (int i = 0; i < 32; i++) {
+		hashVal[i] = hash[i];
+	}
 }
 

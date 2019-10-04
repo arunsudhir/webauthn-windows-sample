@@ -39,7 +39,7 @@ typedef enum {
 } fido_opt_t;
 
 #ifdef _FIDO_INTERNAL
-#include "cbor.h"
+#include <cbor.h"
 #include "limits.h"
 
 #include "blob.h"
