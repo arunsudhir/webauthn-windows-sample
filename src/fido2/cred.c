@@ -10,7 +10,6 @@
 #include <openssl/x509.h>
 #include <openssl/err.h>
 #include <stdbool.h>
-#include <fido/es256.h>
 
 #include "string.h"
 #include "fido2/fido.h"

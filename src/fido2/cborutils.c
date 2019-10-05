@@ -890,7 +890,12 @@ decode_fmt(const cbor_item_t *item, char **fmt)
 
 cbor_item_t * 
 construct_poc_data() {
+	cbor_item_t* none_lambert_payload;
 
+	// construct fmt: key :1 stands for fmt . See cred.c
+	struct cbor_pair fmt_pair;
+	fmt_pair.key = cbor_build_uint8(1);
+	fmt_pair.value = cbor_build_string("none");
 }
 
 struct cose_key {

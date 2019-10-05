@@ -25,9 +25,9 @@
 #include <openbsd-compat/openbsd-compat.h>
 
 #include "fido2/fido.h"
-#include "fido/es256.h"
-#include "fido/rs256.h"
-#include "fido/eddsa.h"
+//#include <fido/es256.h>
+#include <fido/rs256.h>
+#include <fido/eddsa.h>
 #include "fido2/extern.h"
 
 int

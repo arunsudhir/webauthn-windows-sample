@@ -7,6 +7,11 @@
 #ifndef _FIDO_ES256_H
 #define _FIDO_ES256_H
 
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
 #include <openssl/ec.h>
 
 #include <stdint.h>
@@ -29,6 +34,10 @@ int es256_sk_create(es256_sk_t *);
 
 int es256_pk_set_x(es256_pk_t *, const unsigned char *);
 int es256_pk_set_y(es256_pk_t *, const unsigned char *);
+#endif
+
+#ifdef __cplusplus
+}
 #endif
 
 #endif /* !_FIDO_ES256_H */
